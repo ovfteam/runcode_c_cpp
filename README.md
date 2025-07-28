@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Phần mở rộng **RunCode C/C++** được thiết kế để xây dựng và chạy mã nguồn C/C++ trên hệ điều hành Windows. Giúp dễ dàng biên dịch và thực thi chương trình C/C++ trực tiếp trong Visual Studio Code.
+Extension **RunCode C/C++** được thiết kế để xây dựng và chạy code C/C++ trên hệ điều hành Windows. Giúp dễ dàng biên dịch và thực thi chương trình C/C++ trực tiếp trong Visual Studio Code.
 
 ## Yêu cầu
 
@@ -21,18 +21,10 @@ Phần mở rộng **RunCode C/C++** được thiết kế để xây dựng và
 ## Sử dụng
 
 1. Đảm bảo rằng bạn đã cài đặt phần mở rộng [**C/C++**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).
-2. Mở một tệp mã nguồn C hoặc C++ trong Visual Studio Code.
-3. Nhấn nút **Chạy Code** (`extension.buildCode`) hoặc phím tắt **F6** để xây dựng và chạy mã nguồn.
-
-- . Nếu mã nguồn có lỗi cú pháp hoặc lỗi biên dịch, các lỗi sẽ được hiển thị trong bảng **Output** và trình soạn thảo sẽ tự động di chuyển đến dòng có lỗi.
-
-- . Để định dạng mã nguồn C/C++, bạn có thể sử dụng các phần mở rộng như **Prettier** hoặc **Clang-Format** để tự động định dạng mã nguồn theo quy tắc nhất định trước khi sử dụng phần mở rộng RunCode C/C++ cho đẹp hơn.
-
-## Ghi chú phát hành
-
-### 0.0.1
-
-- Phiên bản đầu tiên.
+2. Mở một file C hoặc C++ trong Visual Studio Code.
+3. Sử dụng các tính năng:
+   - **F6**: Chạy code
+   - **F5**: Debug code
 
 ## Đóng góp
 
@@ -42,6 +34,6 @@ Nếu bạn muốn đóng góp vào phát triển của phần mở rộng **Run
 2. Tạo một nhánh mới cho các thay đổi của bạn: `git checkout -b my-feature`
 3. Thực hiện các thay đổi cần thiết và commit: `git commit -am 'Add new feature'`
 4. Push nhánh của bạn lên repository của bạn: `git push origin my-feature`
-5. Tạo một pull request mới trên GitHub và mô tả chi tiết về các thay đổi của bạn.
+5. Tạo một pull request mới trên GitHub và mô tả chi tiết về các thay đổi.
 
 Xin cảm ơn đã quan tâm và đóng góp vào phát triển của **RunCode C/C++**!

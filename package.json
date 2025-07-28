@@ -1,97 +1,125 @@
 {
-	"activationEvents": [
-		"onLanguage:c",
-		"onLanguage:cpp"
-	],
-	"categories": [
-		"Other",
-		"Formatters",
-		"Programming Languages",
-		"Linters"
-	],
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.buildCode",
-				"icon": "$(debug-start)",
-				"title": "Chạy code"
-			},
-			{
-				"command": "C_Cpp.debugShortcut",
-				"key": false,
-				"title": "Debug"
-			},
-			{
-				"command": "extension.stopCode",
-				"icon": "$(debug-stop)",
-				"title": "Dừng code"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "extension.buildCode",
-				"key": "F6",
-				"mac": "F6",
-				"when": "editorTextFocus"
-			}
-		],
-		"menus": {
-			"editor/title": [
-				{
-					"command": "extension.buildCode",
-					"group": "navigation",
-					"when": "resourceLangId == c || resourceLangId == cpp && !extension.buildCode.isCodeRunning"
-				},
-				{
-					"command": "extension.stopCode",
-					"group": "navigation",
-					"when": "resourceLangId == c || resourceLangId == cpp && extension.buildCode.isCodeRunning"
-				}
-			]
-		},
-		"statusbar": [
-			{
-				"alignment": "left",
-				"command": "extension.buildCode",
-				"priority": 100,
-				"text": "$(play) Chạy",
-				"tooltip": "Click để chạy code của bạn"
-			}
-		]
-	},
-	"description": "Build và chạy code C/C++ trên hệ điều hành Windows",
-	"devDependencies": {
-		"@types/mocha": "^10.0.6",
-		"@types/node": "18.x",
-		"@types/vscode": "^1.85.0",
-		"@vscode/test-cli": "^0.0.4",
-		"@vscode/test-electron": "^2.3.8",
-		"eslint": "^8.56.0",
-		"typescript": "^5.3.3"
-	},
-	"displayName": "RunCode C/C++",
-	"engines": {
-		"vscode": "^1.85.0"
-	},
-	"extensionDependencies": [
-		"ms-vscode.cpptools"
-	],
-	"icon": "icon.png",
-	"keywords": [
-		"C",
-		"C++",
-		"cpp",
-		"run"
-	],
-	"main": "./extension.js",
-	"name": "runcode",
-	"publisher": "ovftank",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ovfteam/runcode_c_cpp"
-	},
-	"scripts": {
-		"deploy": "vsce publish --yarn"
-	},
-	"version": "0.0.1"
+    "activationEvents": [
+        "onLanguage:c",
+        "onLanguage:cpp"
+    ],
+    "categories": [
+        "Other",
+        "Formatters",
+        "Programming Languages",
+        "Linters"
+    ],
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.buildCode",
+                "icon": "$(debug-start)",
+                "title": "Chạy code"
+            },
+            {
+                "command": "extension.debugCode",
+                "icon": "$(debug-alt)",
+                "title": "Debug code"
+            },
+            {
+                "command": "C_Cpp.debugShortcut",
+                "key": false,
+                "title": "Debug"
+            },
+            {
+                "command": "extension.stopCode",
+                "icon": "$(debug-stop)",
+                "title": "Dừng code"
+            }
+        ],
+        "configuration": {
+            "title": "RunCode C/C++",
+            "properties": {
+                "runcode.autoSave": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Tự động save file trước khi build"
+                },
+                "runcode.compilerFlags": {
+                    "type": "string",
+                    "default": "-Wall -Wextra",
+                    "description": "Compiler flags bổ sung"
+                }
+            }
+        },
+        "snippets": [
+            {
+                "language": "cpp",
+                "path": "./snippets/cpp.json"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.buildCode",
+                "key": "F6",
+                "mac": "F6",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.debugCode",
+                "key": "F5",
+                "mac": "F5",
+                "when": "editorTextFocus && (resourceLangId == c || resourceLangId == cpp)"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "extension.buildCode",
+                    "group": "navigation",
+                    "when": "resourceLangId == c || resourceLangId == cpp && !extension.buildCode.isCodeRunning"
+                },
+                {
+                    "command": "extension.debugCode",
+                    "group": "navigation",
+                    "when": "resourceLangId == c || resourceLangId == cpp && !extension.buildCode.isCodeRunning"
+                },
+                {
+                    "command": "extension.stopCode",
+                    "group": "navigation",
+                    "when": "resourceLangId == c || resourceLangId == cpp && extension.buildCode.isCodeRunning"
+                }
+            ]
+        }
+    },
+    "description": "Build và chạy code C/C++ trên hệ điều hành Windows",
+    "devDependencies": {
+        "@types/mocha": "10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "1.85.0",
+        "@vscode/test-cli": "0.0.4",
+        "@vscode/test-electron": "2.3.8",
+        "eslint": "8.56.0",
+        "typescript": "5.3.3"
+    },
+    "displayName": "RunCode C/C++",
+    "engines": {
+        "vscode": ">=1.85.0"
+    },
+    "extensionDependencies": [
+        "ms-vscode.cpptools"
+    ],
+    "icon": "icon.png",
+    "keywords": [
+        "C",
+        "C++",
+        "cpp",
+        "run"
+    ],
+    "main": "./extension.js",
+    "name": "runcode",
+    "publisher": "ovftank",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ovfteam/runcode_c_cpp"
+    },
+    "scripts": {
+        "deploy": "vsce publish"
+    },
+    "version": "0.0.2"
 }
