@@ -2,7 +2,15 @@
 
 ## Mô tả
 
-Extension **RunCode C/C++** được thiết kế để xây dựng và chạy code C/C++ trên hệ điều hành Windows. Giúp dễ dàng biên dịch và thực thi chương trình C/C++ trực tiếp trong Visual Studio Code.
+Extension **RunCode C/C++** được thiết kế để build và chạy code C/C++ trên Windows. Hỗ trợ biên dịch, chạy, debug trực tiếp trong Visual Studio Code.
+
+## Debug
+
+![debug](demo_debug.gif)
+
+## Gợi ý/snippets
+
+![snippets](demo_snippets.gif)
 
 ## Yêu cầu
 
@@ -11,29 +19,25 @@ Extension **RunCode C/C++** được thiết kế để xây dựng và chạy c
 
 ## Cài đặt
 
-1. Khởi chạy Visual Studio Code.
-2. Mở cửa sổ Extensions bằng cách nhấp vào biểu tượng hình vuông trên thanh bên trái hoặc bằng cách nhấn `Ctrl+Shift+X`.
-3. Tìm kiếm "RunCode C/C++" trong ô tìm kiếm của cửa sổ Extensions.
-4. Nhấp vào phần mở rộng **RunCode C/C++** trong kết quả tìm kiếm.
-5. Nhấp vào nút **Cài đặt** để cài đặt phần mở rộng.
-6. Sau khi cài đặt, bạn có thể bắt đầu sử dụng phần mở rộng.
+1. Mở Visual Studio Code.
+2. Nhấn `Ctrl+Shift+X` để mở Extensions.
+3. Tìm "RunCode C/C++" và cài đặt.
+4. Sau khi cài xong là dùng được luôn.
 
 ## Sử dụng
 
-1. Đảm bảo rằng bạn đã cài đặt phần mở rộng [**C/C++**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).
-2. Mở một file C hoặc C++ trong Visual Studio Code.
-3. Sử dụng các tính năng:
-   - **F6**: Chạy code
-   - **F5**: Debug code
+1. Đảm bảo đã cài extension [**C/C++**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).
+2. Mở file .c hoặc .cpp.
+3. Shortcut:
+   - **F6**: chạy code
+   - **F5**: debug code
 
 ## Đóng góp
 
-Nếu bạn muốn đóng góp vào phát triển của phần mở rộng **RunCode C/C++**, bạn có thể làm theo các bước sau:
+- Fork repo: [RunCode C/C++](https://github.com/ovfteam/runcode_c_cpp)
+- Tạo branch mới: `git checkout -b my-feature`
+- Commit thay đổi: `git commit -am 'add new feature'`
+- Push lên repo: `git push origin my-feature`
+- Tạo pull request trên GitHub
 
-1. Fork dự án trên GitHub: [RunCode C/C++](https://github.com/ovfteam/runcode_c_cpp)
-2. Tạo một nhánh mới cho các thay đổi của bạn: `git checkout -b my-feature`
-3. Thực hiện các thay đổi cần thiết và commit: `git commit -am 'Add new feature'`
-4. Push nhánh của bạn lên repository của bạn: `git push origin my-feature`
-5. Tạo một pull request mới trên GitHub và mô tả chi tiết về các thay đổi.
-
-Xin cảm ơn đã quan tâm và đóng góp vào phát triển của **RunCode C/C++**!
+có gì góp ý/bug thì cứ tạo issue hoặc PR nhé.

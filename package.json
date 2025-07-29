@@ -95,16 +95,18 @@
         "@types/vscode": "1.85.0",
         "@vscode/test-cli": "0.0.4",
         "@vscode/test-electron": "2.3.8",
+        "@vscode/vsce": "3.6.0",
         "eslint": "8.56.0",
         "typescript": "5.3.3"
     },
     "displayName": "RunCode C/C++",
     "engines": {
-        "vscode": ">=1.85.0"
+        "vscode": "^1.85.0"
     },
     "extensionDependencies": [
         "ms-vscode.cpptools"
     ],
+    "homepage": "https://ovfteam.com/",
     "icon": "icon.png",
     "keywords": [
         "C",
@@ -121,7 +123,8 @@
         "url": "https://github.com/ovfteam/runcode_c_cpp"
     },
     "scripts": {
-        "deploy": "vsce publish"
+        "package": "vsce package --yarn",
+        "deploy": "vsce publish --yarn"
     },
-    "version": "0.0.3"
+    "version": "0.0.5"
 }

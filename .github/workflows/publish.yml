@@ -1,0 +1,35 @@
+name: Publish Extension
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build-and-publish:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+
+            - name: Setup Yarn
+              run: npm install -g yarn
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Package extension
+              run: yarn run package
+              if: github.event_name == 'push'
+
+            - name: Publish extension
+              if: github.ref == 'refs/heads/main'
+              run: yarn run deploy
+              env:
+                  VSCE_PAT: ${{ secrets.VSCE_PAT }}
