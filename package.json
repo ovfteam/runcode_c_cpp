@@ -7,7 +7,8 @@
         "Other",
         "Formatters",
         "Programming Languages",
-        "Linters"
+        "Linters",
+        "Debuggers"
     ],
     "contributes": {
         "commands": [
@@ -109,11 +110,12 @@
         "C",
         "C++",
         "cpp",
-        "run"
+        "run",
+        "debug"
     ],
     "main": "./extension.js",
     "name": "runcode",
-    "publisher": "ovftank",
+    "publisher": "tripleseven190504",
     "repository": {
         "type": "git",
         "url": "https://github.com/ovfteam/runcode_c_cpp"
@@ -121,5 +123,5 @@
     "scripts": {
         "deploy": "vsce publish"
     },
-    "version": "0.0.2"
+    "version": "0.0.3"
 }

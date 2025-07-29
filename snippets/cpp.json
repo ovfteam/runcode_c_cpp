@@ -1,18 +1,13 @@
 {
     "Main Function": {
         "prefix": "!",
-        "body": ["#include <iostream>", "using namespace std;", "", "int main() {", "    $1", "    return 0;", "}"],
+        "body": ["#include <iostream>", "using namespace std;", "", "int main() {", "    ios_base::sync_with_stdio(false);", "    cin.tie(NULL);", "    $1", "    return 0;", "}"],
         "description": "Main function template"
     },
     "Competitive Programming Template": {
         "prefix": "cp",
-        "body": ["#include <bits/stdc++.h>", "using namespace std;", "", "#define ll long long", "#define vi vector<int>", "#define vll vector<long long>", "#define pii pair<int, int>", "#define pll pair<long long, long long>", "#define MOD 1000000007", "#define INF 1e18", "", "void solve() {", "    $1", "}", "", "int main() {", "    ios_base::sync_with_stdio(false);", "    cin.tie(NULL);", "    ", "    int t;", "    cin >> t;", "    while(t--) {", "        solve();", "    }", "    return 0;", "}"],
+        "body": ["#include <algorithm>", "#include <bitset>", "#include <complex>", "#include <deque>", "#include <exception>", "#include <fstream>", "#include <functional>", "#include <iomanip>", "#include <ios>", "#include <iosfwd>", "#include <iostream>", "#include <istream>", "#include <iterator>", "#include <limits>", "#include <list>", "#include <locale>", "#include <map>", "#include <memory>", "#include <new>", "#include <numeric>", "#include <ostream>", "#include <queue>", "#include <set>", "#include <sstream>", "#include <stack>", "#include <stdexcept>", "#include <streambuf>", "#include <string>", "#include <typeinfo>", "#include <utility>", "#include <valarray>", "#include <vector>", "#include <array>", "#include <atomic>", "#include <chrono>", "#include <condition_variable>", "#include <forward_list>", "#include <future>", "#include <initializer_list>", "#include <mutex>", "#include <random>", "#include <ratio>", "#include <regex>", "#include <scoped_allocator>", "#include <system_error>", "#include <thread>", "#include <tuple>", "#include <typeindex>", "#include <type_traits>", "#include <unordered_map>", "#include <unordered_set>", "using namespace std;", "", "#define ll long long", "#define vi vector<int>", "#define vll vector<long long>", "#define pii pair<int, int>", "#define pll pair<long long, long long>", "#define MOD 1000000007", "#define INF 1e18", "", "void solve() {", "    $1", "}", "", "int main() {", "    ios_base::sync_with_stdio(false);", "    cin.tie(NULL);", "    ", "    int t;", "    cin >> t;", "    while(t--) {", "        solve();", "    }", "    return 0;", "}"],
         "description": "Competitive programming template"
-    },
-    "For Loop": {
-        "prefix": "for",
-        "body": ["for(int ${1:i} = 0; ${1:i} < ${2:n}; ${1:i}++) {", "    $3", "}"],
-        "description": "For loop"
     },
     "Range For": {
         "prefix": "forr",
@@ -38,11 +33,6 @@
         "prefix": "pair",
         "body": ["pair<${1:int}, ${2:int}> ${3:p};"],
         "description": "Pair declaration"
-    },
-    "Class": {
-        "prefix": "class",
-        "body": ["class ${1:ClassName} {", "private:", "    $2", "public:", "    ${1:ClassName}() {", "        $3", "    }", "};"],
-        "description": "Class template"
     },
     "Function": {
         "prefix": "func",

@@ -68,7 +68,7 @@ const activate = (context) => {
                 await saveAllFiles();
 
                 const text = activeEditor.document.getText();
-                const trimmedText = text.replace(/^[\r\n]+|[\r\n]+$/g, '');
+                const trimmedText = text.replace(/(^[\r\n]+|[\r\n]+$)/g, '');
                 await activeEditor.edit((editBuilder) => {
                     const start = new vscode.Position(0, 0);
                     const end = activeEditor.document.lineAt(activeEditor.document.lineCount - 1).range.end;
@@ -87,11 +87,8 @@ const activate = (context) => {
                 outputChannel.appendLine(`Đang build: ${buildCommand}`);
 
                 runningProcess = exec(buildCommand, (error, stdout, stderr) => {
-                    let buildSuccessful = true;
-
                     if (error) {
                         vscode.commands.executeCommand('setContext', 'extension.buildCode.isCodeRunning', false);
-                        buildSuccessful = false;
                         vscode.window.showErrorMessage(`Lỗi: ${error.message}`);
 
                         const errorLineRegex = /(\d+):\d+: error: ([^]+?)(\n\s+at\s+\S+\s+\S+\s+\S+)*\n/g;
@@ -103,21 +100,14 @@ const activate = (context) => {
                             const diagnostic = new vscode.Diagnostic(new vscode.Range(lineNumber, 0, lineNumber, 0), errorMessage, vscode.DiagnosticSeverity.Error);
                             diagnostics.set(vscode.window.activeTextEditor.document.uri, [diagnostic]);
                         }
-
-                        if (buildSuccessful) {
-                            diagnostics.delete(vscode.window.activeTextEditor.document.uri);
-                        }
                     } else {
                         vscode.commands.executeCommand('setContext', 'extension.buildCode.isCodeRunning', false);
-                        buildSuccessful = true;
                         outputChannel.appendLine('Build thành công!');
                         vscode.window.showInformationMessage('Biên dịch thành công');
                         setTimeout(() => {
                             vscode.commands.executeCommand('notifications.clearAll');
                         }, 4000);
-                        if (buildSuccessful) {
-                            diagnostics.delete(vscode.window.activeTextEditor.document.uri);
-                        }
+                        diagnostics.delete(vscode.window.activeTextEditor.document.uri);
 
                         const batchContent = `@echo off
 set start_time=%time%
@@ -250,6 +240,42 @@ exit`;
     context.subscriptions.push(debugCommand);
 
     diagnostics = vscode.languages.createDiagnosticCollection('compilation');
+
+    const foldIncludeBlock = (editor) => {
+        if (!editor) return;
+        const doc = editor.document;
+        if (!doc.fileName.endsWith('.cpp')) return;
+        let start = -1,
+            end = -1;
+        for (let i = 0; i < Math.min(200, doc.lineCount); ++i) {
+            const line = doc.lineAt(i).text.trim();
+            if (line.startsWith('#include')) {
+                if (start === -1) start = i;
+                end = i;
+            } else if (start !== -1) {
+                break;
+            }
+        }
+        if (start !== -1 && end > start) {
+            editor.selections = [new vscode.Selection(start, 0, end, 0)];
+            vscode.commands.executeCommand('editor.fold');
+            setTimeout(() => {
+                editor.selections = [new vscode.Selection(0, 0, 0, 0)];
+            }, 100);
+        }
+    };
+
+    vscode.window.onDidChangeActiveTextEditor(
+        (editor) => {
+            if (editor) foldIncludeBlock(editor);
+        },
+        null,
+        context.subscriptions
+    );
+
+    if (vscode.window.activeTextEditor) {
+        foldIncludeBlock(vscode.window.activeTextEditor);
+    }
 };
 
 const deactivate = () => {};
